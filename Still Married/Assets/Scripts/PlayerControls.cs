@@ -84,34 +84,13 @@ public class PlayerControls : MonoBehaviour
          if(context.canceled){
                 shrekState = "neutral";
         }
-        /*
-        switch (context.phase) {
-            case InputActionPhase.Performed:
-                if(context.interaction is HoldInteraction){
-                    shrek.color = Color.red;
-                    Debug.Log("Defend");
-                } else {
-                    shrek.color = Color.grey;
-                    Debug.Log("Neutral");
-                }
-                break;
-            case InputActionPhase.Started:
-                if(context.interaction is HoldInteraction){
-                    shrek.color = Color.white;
-                    Debug.Log("Hold Release");
-                } else if(context.interaction is TapInteraction) {
-                    shrek.color = Color.green;
-                    Debug.Log("Tap");
-                }
-                break;
-            case InputActionPhase.Canceled:
-                shrek.color = Color.grey;
-                Debug.Log ("Neutral");
-                break;
-        } */
     }
 
     public string getState(){
         return shrekState;
+    }
+
+    public string getDefense(){
+        return defenseState;
     }
 }

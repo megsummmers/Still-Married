@@ -22,7 +22,6 @@ public class FionaController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(patternX + " , " + patternY + " , " + attackPatterns[patternX, patternY]);
         if(fionaState == "neutral" && !countdown){
             fiona.color = Color.grey;
             countdown = true;
@@ -54,5 +53,9 @@ public class FionaController : MonoBehaviour
             }
 
         }
+    }
+
+    public string getState(){
+        return fionaState;
     }
 }

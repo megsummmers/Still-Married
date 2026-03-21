@@ -3,19 +3,21 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     // ----------- Variables ------------
-    public string SHstatus = "neutral";
-    public string FIstatus = "neutral";
-    private int SHealth = 100; // 
-    private int FHealth = 100;
-    private int hitDammage = 10;
+    [SerializeField]public string SHstatus = "neutral";
+    [SerializeField]public string FIstatus = "neutral";
+    [SerializeField] private float SHealth = 100; // 
+    [SerializeField]private float FHealth = 100;
+    private float hitDamage = 10;
     
-    private int SStamina = 0; // max 4
-    private int FStamina = 0;
+    [SerializeField]private int SStamina = 0; // max 4
+    [SerializeField]private int FStamina = 0;
     private int staminaMax = 4;
 
-    // ----------- Sprites -------------
+    // ----------- Objects -------------
     public GameObject shrek;
     public GameObject fiona;
+    public GameObject shrekHbar;
+    public GameObject fionaHbar;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,24 +30,48 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(SStamina == 5){
+            //speacial attack
+            DamageFiona(2f);
+        }
+
+        if(FStamina == 5){
+            DamageShrek(2f);
+        }
     }
 
     public void AttackCheck()
     {
-        // 
+        // Get variables from other scripts
         string shrekState = shrek.GetComponent<PlayerControls>().getState();
-        string fionaState = shrek.GetComponent<PlayerControls>().getState();
+        string shrekDefense = shrek.GetComponent<PlayerControls>().getDefense();
+        string fionaState = fiona.GetComponent<FionaController>().getState();
 
-        Debug.Log(shrekState + " , " + fionaState);
-        /*
+        // Check who is attacking/being damaged
         if(shrekState == "attack" && fionaState == "neutral"){
-            FHealth -= hitDammage;
+            DamageFiona(1f);
         } else if (shrekState == "neutral" && fionaState == "attack"){
-            SHealth -= hitDammage;
+            DamageShrek(1f);
         } else if(shrekState == "defense" && fionaState == "attack"){
-
+            if(shrekDefense == "good"){
+                SStamina++;
+            } if(shrekDefense == "weak"){
+                DamageShrek(0.5f);
+            } else if(shrekDefense == "bad"){
+                DamageShrek(1f);
+            }
         }
-        */
+    }
+
+    private void DamageShrek(float multiplier){
+        SHealth -= (hitDamage * multiplier);
+        shrekHbar.transform.localScale += new Vector3(-0.5f, 0f, 0f);
+        shrekHbar.transform.Translate(-0.25f, 0f, 0f);
+    }
+
+    private void DamageFiona(float multiplier){
+        FHealth -= (hitDamage * multiplier);
+        fionaHbar.transform.localScale += new Vector3(-0.5f, 0f, 0f);
+        fionaHbar.transform.Translate(-0.25f, 0f, 0f);
     }
 }

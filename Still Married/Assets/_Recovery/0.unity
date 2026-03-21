@@ -129,7 +129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 592331327}
   - component: {fileID: 592331326}
-  - component: {fileID: 592331328}
   m_Layer: 0
   m_Name: Fiona
   m_TagString: Untagged
@@ -211,20 +210,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &592331328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 592331325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dcd0a2d5e06171489fc8450915dd7c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FionaController
-  fiona: {fileID: 0}
-  fionaState: neutral
 --- !u!1 &932160765
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,7 +500,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControls
   shrek: {fileID: 0}
   shrekState: neutral
-  controllerScript: {fileID: 1871447166}
 --- !u!1 &1871447166
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,8 +531,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Controller
   SHstatus: Neutral
   FIstatus: Neutral
-  shrek: {fileID: 1858852267}
-  fiona: {fileID: 592331325}
+  shrek: {fileID: 1858852268}
+  fiona: {fileID: 592331326}
 --- !u!4 &1871447168
 Transform:
   m_ObjectHideFlags: 0

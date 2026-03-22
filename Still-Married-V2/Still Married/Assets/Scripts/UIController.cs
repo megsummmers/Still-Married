@@ -49,12 +49,14 @@ public class Controller : MonoBehaviour
     void Update()
     {
         if(SStamina >= staminaMax){
+            fiona.GetComponent<FionaController>().FinalPose('s');
             //speacial attack
             audioSourceLVL.PlayOneShot(chaise, 1.0f);
             DamageFiona(2f);
             SStamina = 0;
         }
         if(FStamina >= staminaMax){
+            shrek.GetComponent<PlayerControls>().FinalPose('s');
             audioSourceLVL.PlayOneShot(emotional, 1.0f);
             // special attack
             DamageShrek(2f);

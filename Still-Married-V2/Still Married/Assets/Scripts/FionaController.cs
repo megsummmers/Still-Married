@@ -34,12 +34,12 @@ public class FionaController : MonoBehaviour
     void Update()
     {
         if(fionaState == "neutral" && !countdown){
-            animator.SetBool("IsAttacking", false);
+            animator.SetBool("IsAttacked", false);
             // fiona.color = Color.grey;
             countdown = true;
             timer = 100f;
         } else if(fionaState == "attack" && !countdown){
-            animator.SetBool("IsAttacking", true);
+            animator.SetBool("IsAttacked", true);
             fiona.color = Color.green;
             // trigger attack in Controller
             controllerScript.GetComponent<Controller>().AttackCheck();
@@ -76,7 +76,11 @@ public class FionaController : MonoBehaviour
     }
 
     public void FinalPose(char state){
-        animator.SetBool("IsVictory", true);
+        if(state == 'w' || state == 'l'){
+            animator.SetBool("IsVictory", true);
+        } else if(state == 's'){
+            animator.SetBool("IsSpecialy", true);
+        }
         
     }
 }

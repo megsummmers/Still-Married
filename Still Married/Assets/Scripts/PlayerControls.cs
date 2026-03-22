@@ -18,6 +18,8 @@ public class PlayerControls : MonoBehaviour
     private bool countdown = false;
 
     public GameObject controllerScript;
+    //public CharacterController2D controller;
+    public Animator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,6 +36,7 @@ public class PlayerControls : MonoBehaviour
             //reset defense
             defenseState = "good";
         } else if(shrekState == "defend" && !countdown){
+            animator.SetBool("IsDefending", true);
             // Timer to reduce defense efficiency
             if(defenseState == "good"){
                 shrek.color = Color.blue;
@@ -47,6 +50,7 @@ public class PlayerControls : MonoBehaviour
                 shrek.color = Color.red;
             }
         } else if(shrekState == "attack" && !countdown){
+            animator.SetBool("IsAttacking", true);
             shrek.color = Color.green;
             countdown = true;
             timer = 60f;

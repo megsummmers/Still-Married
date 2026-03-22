@@ -9,7 +9,6 @@ public class FionaController : MonoBehaviour
     private int atkChance;
 
     private int[,] attackPatterns = {{0, 1, 1, 0, 1}, {1, 0, 0, 1, 0}, {1, 0, 1, 0, 1}, {0, 0, 1, 1, 0}, {0, 1, 0, 1, 0}};
-    private int patternLength = 5;
     private int patternX = 0;
     private int patternY = 0;
 

@@ -36,11 +36,11 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(SStamina == 5){
+        if(SStamina == staminaMax){
             //speacial attack
             DamageFiona(2f);
         }
-        if(FStamina == 5){
+        if(FStamina == staminaMax){
             // special attack
             DamageShrek(2f);
         }

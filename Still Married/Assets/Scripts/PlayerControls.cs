@@ -15,7 +15,6 @@ public class PlayerControls : MonoBehaviour
     private string defenseState = "good";
 
     private float timer = 0;
-    private int timer2 = 0;
     private bool countdown = false;
 
     public GameObject controllerScript;

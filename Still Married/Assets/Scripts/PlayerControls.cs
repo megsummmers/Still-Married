@@ -39,11 +39,11 @@ public class PlayerControls : MonoBehaviour
             if(defenseState == "good"){
                 shrek.color = Color.blue;
                 countdown = true;
-                timer = 180f;
+                timer = 240f;
             } else if(defenseState == "weak"){
                 shrek.color = Color.violet;
                 countdown = true;
-                timer = 180f;
+                timer = 240f;
             } else {
                 shrek.color = Color.red;
             }
@@ -73,16 +73,20 @@ public class PlayerControls : MonoBehaviour
     public void OnAttack(InputAction.CallbackContext context){
         // User input control
         if(context.performed){
-            if(context.interaction is HoldInteraction){
+            if(!controllerScript.GetComponent<Controller>().GameStatus()){
+                // GAME ON
+                if(context.interaction is HoldInteraction){
                 shrekState = "defend";
+                }
+                if(context.interaction is TapInteraction){
+                    shrekState = "attack";
+                    controllerScript.GetComponent<Controller>().AttackCheck();
+                } 
             }
-            if(context.interaction is TapInteraction){
-                shrekState = "attack";
-                controllerScript.GetComponent<Controller>().AttackCheck();
-            } 
+            
         }
          if(context.canceled){
-                shrekState = "neutral";
+            shrekState = "neutral";
         }
     }
 

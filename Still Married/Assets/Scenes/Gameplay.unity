@@ -420,11 +420,11 @@ Transform:
   m_GameObject: {fileID: 288520743}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.95, y: -2.22, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 756321613}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &296642862
 GameObject:
@@ -756,7 +756,7 @@ GameObject:
   - component: {fileID: 504980997}
   - component: {fileID: 504980996}
   m_Layer: 0
-  m_Name: F0_0
+  m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -830,7 +830,7 @@ Transform:
   m_GameObject: {fileID: 504980995}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.16, y: 0.01, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.72, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -922,11 +922,11 @@ Transform:
   m_GameObject: {fileID: 592331325}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: -3.4, z: 0}
+  m_LocalPosition: {x: 2.95, y: -1.1800001, z: 0}
   m_LocalScale: {x: 4.271238, y: 5.6662335, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 756321613}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &592331328
 MonoBehaviour:
@@ -953,7 +953,7 @@ GameObject:
   m_Component:
   - component: {fileID: 756321613}
   m_Layer: 0
-  m_Name: GameScreen
+  m_Name: Health/Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -972,9 +972,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1858852270}
-  - {fileID: 592331327}
-  - {fileID: 288520746}
   - {fileID: 296642864}
   - {fileID: 1561550978}
   - {fileID: 1403385847}
@@ -1723,11 +1720,11 @@ Transform:
   m_GameObject: {fileID: 1858852267}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.5, y: -3.4, z: 0}
+  m_LocalPosition: {x: -2.55, y: -1.1800001, z: 0}
   m_LocalScale: {x: 4.271238, y: 5.6662335, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 756321613}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1858852271
 MonoBehaviour:
@@ -1903,7 +1900,7 @@ GameObject:
   - component: {fileID: 2069919560}
   - component: {fileID: 2069919559}
   m_Layer: 0
-  m_Name: front-ring_0
+  m_Name: foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1989,7 +1986,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 932160768}
   - {fileID: 1871447168}
+  - {fileID: 1858852270}
+  - {fileID: 592331327}
   - {fileID: 1400992781}
   - {fileID: 756321613}
+  - {fileID: 288520746}
   - {fileID: 504980997}
   - {fileID: 2069919560}

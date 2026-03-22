@@ -14,6 +14,15 @@ public class FionaController : MonoBehaviour
 
     public GameObject controllerScript;
 
+    // SFX
+    public AudioSource audioSourceLVL;
+    public AudioClip chaise;
+    public AudioClip merde;
+    public AudioClip plier;
+    public AudioClip emotional;
+    public AudioClip tabarnac;
+    public AudioClip married;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,6 +43,8 @@ public class FionaController : MonoBehaviour
                 controllerScript.GetComponent<Controller>().AttackCheck();
                 countdown = true;
                 timer = 60f;
+                //Play Soundtrack
+                audioSourceLVL.PlayOneShot(tabarnac, 1.0f);
             }
 
             if(countdown && timer > 0){

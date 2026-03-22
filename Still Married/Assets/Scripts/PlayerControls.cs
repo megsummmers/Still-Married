@@ -21,15 +21,29 @@ public class PlayerControls : MonoBehaviour
     //public CharacterController2D controller;
     public Animator animator;
 
+    // SFX
+    public AudioSource audioSourceLVL;
+    public AudioClip chaise;
+    public AudioClip merde;
+    public AudioClip plier;
+    public AudioClip soundtrack;
+    public AudioClip emotional;
+    public AudioClip tabarnac;
+    public AudioClip married;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         shrek = GetComponent<SpriteRenderer>();
+         //Play Soundtrack
+        audioSourceLVL.PlayOneShot(soundtrack, 1.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
+       
+
         // Change sprite
         if(shrekState == "neutral"){
             shrek.color = Color.grey;
@@ -37,6 +51,8 @@ public class PlayerControls : MonoBehaviour
             defenseState = "good";
         } else if(shrekState == "defend" && !countdown){
             animator.SetBool("IsDefending", true);
+            //Play Soundtrack
+            audioSourceLVL.PlayOneShot(tabarnac, 1.0f);
             // Timer to reduce defense efficiency
             if(defenseState == "good"){
                 shrek.color = Color.blue;
@@ -54,6 +70,8 @@ public class PlayerControls : MonoBehaviour
             shrek.color = Color.green;
             countdown = true;
             timer = 60f;
+            //Play Soundtrack
+            audioSourceLVL.PlayOneShot(tabarnac, 1.0f);
         }
 
         // countdown for attack reset + defense degrade

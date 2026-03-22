@@ -251,6 +251,14 @@ MonoBehaviour:
   shrekState: neutral
   controllerScript: {fileID: 1871447166}
   animator: {fileID: 0}
+  audioSourceLVL: {fileID: 288520747}
+  chaise: {fileID: 8300000, guid: d942b3f1406ff44d1be781d80697d60e, type: 3}
+  merde: {fileID: 8300000, guid: 0628b703ba60048b99fd495d1834f93a, type: 3}
+  plier: {fileID: 8300000, guid: 7d6ca12de102641eca99f9ee9f72d694, type: 3}
+  soundtrack: {fileID: 8300000, guid: 9f7a79b93f50842da99e604732003ff2, type: 3}
+  emotional: {fileID: 8300000, guid: 7370833a66cf34ab4a06215fdc148e0e, type: 3}
+  tabarnac: {fileID: 8300000, guid: dd1784c6e075e42c29097fa9068576eb, type: 3}
+  married: {fileID: 8300000, guid: 3912f281726584652869e8a8c754e2fd, type: 3}
 --- !u!114 &18666766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,6 +544,7 @@ GameObject:
   - component: {fileID: 288520746}
   - component: {fileID: 288520745}
   - component: {fileID: 288520744}
+  - component: {fileID: 288520747}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -604,6 +613,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &288520747
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288520743}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &296642862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,7 +1185,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1121,6 +1227,13 @@ MonoBehaviour:
   fiona: {fileID: 592331326}
   fionaState: neutral
   controllerScript: {fileID: 1871447166}
+  audioSourceLVL: {fileID: 288520747}
+  chaise: {fileID: 8300000, guid: d942b3f1406ff44d1be781d80697d60e, type: 3}
+  merde: {fileID: 8300000, guid: 3912f281726584652869e8a8c754e2fd, type: 3}
+  plier: {fileID: 8300000, guid: 7d6ca12de102641eca99f9ee9f72d694, type: 3}
+  emotional: {fileID: 8300000, guid: 7370833a66cf34ab4a06215fdc148e0e, type: 3}
+  tabarnac: {fileID: 8300000, guid: dd1784c6e075e42c29097fa9068576eb, type: 3}
+  married: {fileID: 8300000, guid: 3912f281726584652869e8a8c754e2fd, type: 3}
 --- !u!1 &756321612
 GameObject:
   m_ObjectHideFlags: 0

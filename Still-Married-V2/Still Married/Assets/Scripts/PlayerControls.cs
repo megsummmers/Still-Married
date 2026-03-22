@@ -21,38 +21,25 @@ public class PlayerControls : MonoBehaviour
     //public CharacterController2D controller;
     public Animator animator;
 
-    // SFX
-    public AudioSource audioSourceLVL;
-    public AudioClip chaise;
-    public AudioClip merde;
-    public AudioClip plier;
-    public AudioClip soundtrack;
-    public AudioClip emotional;
-    public AudioClip tabarnac;
-    public AudioClip married;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         shrek = GetComponent<SpriteRenderer>();
-         //Play Soundtrack
-        audioSourceLVL.PlayOneShot(soundtrack, 1.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-       
-
         // Change sprite
         if(shrekState == "neutral"){
-            shrek.color = Color.grey;
+            animator.SetBool("IsAttacking", false);
+            animator.SetBool("IsDefending", false);
+            // shrek.color = Color.grey;
             //reset defense
             defenseState = "good";
+            countdown = false;
         } else if(shrekState == "defend" && !countdown){
             animator.SetBool("IsDefending", true);
-            //Play Soundtrack
-            audioSourceLVL.PlayOneShot(tabarnac, 1.0f);
             // Timer to reduce defense efficiency
             if(defenseState == "good"){
                 shrek.color = Color.blue;
@@ -70,14 +57,13 @@ public class PlayerControls : MonoBehaviour
             shrek.color = Color.green;
             countdown = true;
             timer = 60f;
-            //Play Soundtrack
-            audioSourceLVL.PlayOneShot(tabarnac, 1.0f);
         }
 
         // countdown for attack reset + defense degrade
         if(countdown && timer > 0){
             timer = timer - 1f;
         } else if(countdown && timer <= 0 && shrekState == "attack"){
+            animator.SetBool("IsAttacking", false);
             countdown = false;
             shrekState = "neutral";
         }  else if(countdown && timer <= 0 && shrekState == "defend" && defenseState == "good"){
@@ -94,7 +80,6 @@ public class PlayerControls : MonoBehaviour
     public void OnAttack(InputAction.CallbackContext context){
         // User input control
         if(context.performed){
-            if(!controllerScript.GetComponent<Controller>().GameStatus()){
                 // GAME ON
                 if(context.interaction is HoldInteraction){
                 shrekState = "defend";
@@ -102,9 +87,7 @@ public class PlayerControls : MonoBehaviour
                 if(context.interaction is TapInteraction){
                     shrekState = "attack";
                     controllerScript.GetComponent<Controller>().AttackCheck();
-                } 
-            }
-            
+                }
         }
          if(context.canceled){
             shrekState = "neutral";
@@ -117,5 +100,13 @@ public class PlayerControls : MonoBehaviour
 
     public string getDefense(){
         return defenseState;
+    }
+
+    public void FinalPose(char state){
+        if(state == 'w'){
+            animator.SetBool("IsVictory", true);
+        } else if(state == 'l'){
+            animator.SetBool("IsDefeat", true);
+        }
     }
 }

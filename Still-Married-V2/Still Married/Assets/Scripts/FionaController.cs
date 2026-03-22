@@ -13,6 +13,7 @@ public class FionaController : MonoBehaviour
     private int patternY = 0;
 
     public GameObject controllerScript;
+    public Animator animator;
 
     // SFX
     public AudioSource audioSourceLVL;
@@ -32,41 +33,39 @@ public class FionaController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!controllerScript.GetComponent<Controller>().GameStatus()){
-            if(fionaState == "neutral" && !countdown){
-                fiona.color = Color.grey;
-                countdown = true;
-                timer = 180f;
-            } else if(fionaState == "attack" && !countdown){
-                fiona.color = Color.green;
-                // trigger attack in Controller
-                controllerScript.GetComponent<Controller>().AttackCheck();
-                countdown = true;
-                timer = 60f;
-                //Play Soundtrack
-                audioSourceLVL.PlayOneShot(tabarnac, 1.0f);
+        if(fionaState == "neutral" && !countdown){
+            animator.SetBool("IsAttacking", false);
+            // fiona.color = Color.grey;
+            countdown = true;
+            timer = 100f;
+        } else if(fionaState == "attack" && !countdown){
+            animator.SetBool("IsAttacking", true);
+            fiona.color = Color.green;
+            // trigger attack in Controller
+            controllerScript.GetComponent<Controller>().AttackCheck();
+            countdown = true;
+            timer = 60f;
+        }
+
+        if(countdown && timer > 0){
+            fionaState = "neutral";
+            timer = timer - 0.1f;
+        } else if(countdown && timer <= 0){
+            countdown = false;
+            if(patternY == 4){
+                patternY = 0;
+                patternX = 0;
+            } else if(patternX < 4){
+                patternX++;
+            } else if(patternX == 4){
+                patternX = 0;
+                patternY++;
             }
 
-            if(countdown && timer > 0){
-                timer = timer - 0.1f;
-            } else if(countdown && timer <= 0){
-                countdown = false;
-                if(patternY == 4){
-                    patternY = 0;
-                    patternX = 0;
-                } else if(patternX < 4){
-                    patternX++;
-                } else if(patternX == 4){
-                    patternX = 0;
-                    patternY++;
-                }
-
-                if(attackPatterns[patternX, patternY] == 1){
-                    fionaState = "attack";
-                } else {
-                    fionaState = "neutral";
-                }
-
+            if(attackPatterns[patternX, patternY] == 1){
+                fionaState = "attack";
+            } else {
+                fionaState = "neutral";
             }
         }
         
@@ -74,5 +73,10 @@ public class FionaController : MonoBehaviour
 
     public string getState(){
         return fionaState;
+    }
+
+    public void FinalPose(char state){
+        animator.SetBool("IsVictory", true);
+        
     }
 }

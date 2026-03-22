@@ -14,9 +14,9 @@ public class Controller : MonoBehaviour
     
     [SerializeField]private int SStamina = 0; // max 4
     [SerializeField]private int FStamina = 0;
-    private int staminaMax = 4;
+    private int staminaMax = 2;
 
-    public bool gamePaused = true;
+    public bool gamePaused = false;
 
     // ----------- Objects -------------
     public GameObject shrek;
@@ -25,24 +25,40 @@ public class Controller : MonoBehaviour
     public GameObject fionaHbar;
     public GameObject shrekSbar;
     public GameObject fionaSbar;
+    public GameObject finalCanvas;
+
+    // SFX
+    public AudioSource audioSourceLVL;
+    public AudioClip chaise;
+    public AudioClip merde;
+    public AudioClip plier;
+    public AudioClip soundtrack;
+    public AudioClip emotional;
+    public AudioClip tabarnac;
+    public AudioClip married;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
+       //Play Soundtrack
+        audioSourceLVL.PlayOneShot(soundtrack, 1.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(SStamina == staminaMax){
+        if(SStamina >= staminaMax){
             //speacial attack
+            audioSourceLVL.PlayOneShot(chaise, 1.0f);
             DamageFiona(2f);
+            SStamina = 0;
         }
-        if(FStamina == staminaMax){
+        if(FStamina >= staminaMax){
+            audioSourceLVL.PlayOneShot(emotional, 1.0f);
             // special attack
             DamageShrek(2f);
+            FStamina = 0;
         }
     }
 
@@ -69,12 +85,12 @@ public class Controller : MonoBehaviour
             DamageFiona(1f);
         } else if (shrekState == "neutral" && fionaState == "attack"){
             // successful attack = stamina
-            FStamina++;
+            IncreaseStamina('f');
             DamageShrek(1f);
         } else if(shrekState == "defense" && fionaState == "attack"){
             if(shrekDefense == "good"){
                 // successful defense = stamina
-                SStamina++;
+                IncreaseStamina('s');
             } if(shrekDefense == "weak"){
                 DamageShrek(0.5f);
             } else if(shrekDefense == "bad"){
@@ -84,15 +100,25 @@ public class Controller : MonoBehaviour
     }
 
     private void DamageShrek(float multiplier){
+        audioSourceLVL.PlayOneShot(merde, 1.0f);
         SHealth -= (hitDamage * multiplier);
-        shrekHbar.transform.localScale += new Vector3(-0.5f, 0f, 0f);
-        shrekHbar.transform.Translate(-0.25f, 0f, 0f);
+        if(SHealth <= 0){
+            EndGame('f');
+        } else {
+            shrekHbar.transform.localScale += new Vector3(-0.5f, 0f, 0f);
+            shrekHbar.transform.Translate(0.25f, 0f, 0f);
+        }
     }
 
     private void DamageFiona(float multiplier){
+        audioSourceLVL.PlayOneShot(tabarnac, 1.0f);
         FHealth -= (hitDamage * multiplier);
-        fionaHbar.transform.localScale += new Vector3(-0.5f, 0f, 0f);
-        fionaHbar.transform.Translate(0.25f, 0f, 0f);
+        if(FHealth <= 0){
+            EndGame('s');
+        } else {
+            fionaHbar.transform.localScale += new Vector3(-0.5f, 0f, 0f);
+            fionaHbar.transform.Translate(-0.25f, 0f, 0f);
+        }
     }
 
     private void IncreaseStamina(char name){
@@ -100,17 +126,28 @@ public class Controller : MonoBehaviour
             case 's':
                 SStamina++;
                 shrekSbar.transform.localScale += new Vector3(-0.5f, 0f, 0f);
-                shrekSbar.transform.Translate(-0.5f, 0f, 0f);
+                shrekSbar.transform.Translate(0.5f, 0f, 0f);
                 break;
             case 'f':
                 FStamina++;
                 fionaSbar.transform.localScale += new Vector3(-0.5f, 0f, 0f);
-                fionaSbar.transform.Translate(0.5f, 0f, 0f);
+                fionaSbar.transform.Translate(-0.5f, 0f, 0f);
                 break;
         }
     }
 
     public bool GameStatus(){
         return gamePaused;
+    }
+
+    private void EndGame(char winner){
+        audioSourceLVL.PlayOneShot(married, 1.0f);
+        if(winner == 's'){
+            shrek.GetComponent<PlayerControls>().FinalPose('w');
+            fiona.GetComponent<FionaController>().FinalPose('l');
+        } else if(winner == 'f'){
+            shrek.GetComponent<PlayerControls>().FinalPose('l');
+            fiona.GetComponent<FionaController>().FinalPose('w');
+        }
     }
 }
